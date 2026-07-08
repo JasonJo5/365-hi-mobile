@@ -102,6 +102,12 @@ function contactViaInstagram() {
     closeSelectModal();
 }
 
+function contactWhatsAppGeneric() {
+    const message = "Hi, I'd like to know more about your SIM/eSIM plans.";
+    const url = `https://wa.me/${BUSINESS_WHATSAPP}?text=${encodeURIComponent(message)}`;
+    window.open(url, '_blank');
+}
+
 function toggleMobileMenu() {
     const menu = document.getElementById('mobile-menu');
     menu.classList.toggle('hidden');
