@@ -14,7 +14,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Offset anchor scrolling so the fixed header doesn't cover section titles */
-#plans, #faq, #contact, #location, #compare {
+#plans, #faq, #contact, #location, #compare, #how-it-works, #testimonials {
     scroll-margin-top: 96px;
 }
 
