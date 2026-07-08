@@ -206,7 +206,7 @@
 </ul>
 <div class="pt-6 border-t border-outline-variant/30 mt-auto relative z-10">
 <div class="flex items-center justify-between mb-6"><span class="text-label-sm font-bold text-on-surface-variant uppercase">Total Price</span><span class="font-bold text-[18px] text-on-surface">₩20,000</span></div>
-<button class="w-full py-3.5 rounded-full bg-surface-container-high text-on-surface font-bold hover:bg-plan-a hover:text-white transition-colors border border-outline-variant/30">Select Plan</button>
+<button class="w-full py-3.5 rounded-full bg-surface-container-high text-on-surface font-bold hover:bg-plan-a hover:text-white transition-colors border border-outline-variant/30" onclick="openSelectModal('Korea 15', '₩20,000')">Select Plan</button>
 </div>
 </div>
 <div class="plan-card plan-c p-6 lg:p-8 rounded-[32px] flex flex-col group relative bg-surface-container-high border-plan-c/40 shadow-[0_0_20px_rgba(139,92,246,0.1)]">
@@ -223,7 +223,7 @@
 </ul>
 <div class="pt-6 border-t border-outline-variant/30 mt-auto relative z-10">
 <div class="flex items-center justify-between mb-6"><span class="text-label-sm font-bold text-on-surface-variant uppercase">Total Price</span><span class="font-bold text-[18px] text-on-surface">₩30,000</span></div>
-<button class="w-full py-3.5 rounded-full bg-plan-c text-white font-bold hover:bg-plan-c/90 transition-colors shadow-lg shadow-plan-c/20">Select Plan</button>
+<button class="w-full py-3.5 rounded-full bg-plan-c text-white font-bold hover:bg-plan-c/90 transition-colors shadow-lg shadow-plan-c/20" onclick="openSelectModal('Korea 30', '₩30,000')">Select Plan</button>
 </div>
 </div>
 <div class="plan-card plan-b p-6 lg:p-8 rounded-[32px] flex flex-col group relative bg-surface-container-high">
@@ -239,7 +239,7 @@
 </ul>
 <div class="pt-6 border-t border-outline-variant/30 mt-auto relative z-10">
 <div class="flex items-center justify-between mb-6"><span class="text-label-sm font-bold text-on-surface-variant uppercase">Total Price</span><span class="font-bold text-[18px] text-on-surface">₩40,000</span></div>
-<button class="w-full py-3.5 rounded-full bg-surface-container-high text-on-surface font-bold hover:bg-plan-b hover:text-white transition-colors border border-outline-variant/30">Select Plan</button>
+<button class="w-full py-3.5 rounded-full bg-surface-container-high text-on-surface font-bold hover:bg-plan-b hover:text-white transition-colors border border-outline-variant/30" onclick="openSelectModal('Korea 60', '₩40,000')">Select Plan</button>
 </div>
 </div>
 <div class="plan-card plan-d p-6 lg:p-8 rounded-[32px] flex flex-col group relative bg-surface-container-high">
@@ -255,7 +255,7 @@
 </ul>
 <div class="pt-6 border-t border-outline-variant/30 mt-auto relative z-10">
 <div class="flex items-center justify-between mb-6"><span class="text-label-sm font-bold text-on-surface-variant uppercase">Total Price</span><span class="font-bold text-[18px] text-on-surface">₩50,000</span></div>
-<button class="w-full py-3.5 rounded-full bg-surface-container-high text-on-surface font-bold hover:bg-plan-d hover:text-white transition-colors border border-outline-variant/30">Select Plan</button>
+<button class="w-full py-3.5 rounded-full bg-surface-container-high text-on-surface font-bold hover:bg-plan-d hover:text-white transition-colors border border-outline-variant/30" onclick="openSelectModal('Korea 90', '₩50,000')">Select Plan</button>
 </div>
 </div>
 <div class="plan-card plan-f p-6 lg:p-8 rounded-[32px] flex flex-col group relative bg-surface-container-high">
@@ -271,7 +271,7 @@
 </ul>
 <div class="pt-6 border-t border-outline-variant/30 mt-auto relative z-10">
 <div class="flex items-center justify-between mb-6"><span class="text-label-sm font-bold text-on-surface-variant uppercase">Total Price</span><span class="font-bold text-[18px] text-on-surface">₩70,000</span></div>
-<button class="w-full py-3.5 rounded-full bg-surface-container-high text-on-surface font-bold hover:bg-plan-f hover:text-white transition-colors border border-outline-variant/30">Select Plan</button>
+<button class="w-full py-3.5 rounded-full bg-surface-container-high text-on-surface font-bold hover:bg-plan-f hover:text-white transition-colors border border-outline-variant/30" onclick="openSelectModal('Korea 120', '₩70,000')">Select Plan</button>
 </div>
 </div>
 </div>
@@ -296,7 +296,7 @@
 <li class="flex items-start gap-3"><span class="material-symbols-outlined text-plan-a text-[20px]" data-icon="check_circle">check_circle</span> <span>1GB High Speed</span></li>
 <li class="flex items-start gap-3"><span class="material-symbols-outlined text-plan-a text-[20px]" data-icon="check_circle">check_circle</span> <span>Unl. at 1Mbps</span></li>
 </ul>
-<div class="pt-6 border-t border-outline-variant/30 mt-auto relative z-10"><button class="w-full py-3.5 rounded-full bg-surface-container-high text-on-surface font-bold hover:bg-plan-a hover:text-white transition-colors border border-outline-variant/30">Select</button></div>
+<div class="pt-6 border-t border-outline-variant/30 mt-auto relative z-10"><button class="w-full py-3.5 rounded-full bg-surface-container-high text-on-surface font-bold hover:bg-plan-a hover:text-white transition-colors border border-outline-variant/30" onclick="openSelectModal('Plan A', '₩9.9k/mo')">Select</button></div>
 </div>
 <div class="plan-card plan-b p-6 lg:p-8 rounded-[32px] flex flex-col group relative bg-surface-container-high">
 <div class="absolute inset-0 bg-gradient-to-b from-plan-b/5 to-transparent rounded-[32px] pointer-events-none"></div>
@@ -309,7 +309,7 @@
 <li class="flex items-start gap-3"><span class="material-symbols-outlined text-plan-b text-[20px]" data-icon="check_circle">check_circle</span> <span>2.5GB High Speed</span></li>
 <li class="flex items-start gap-3"><span class="material-symbols-outlined text-plan-b text-[20px]" data-icon="check_circle">check_circle</span> <span>Unl. at 1Mbps</span></li>
 </ul>
-<div class="pt-6 border-t border-outline-variant/30 mt-auto relative z-10"><button class="w-full py-3.5 rounded-full bg-surface-container-high text-on-surface font-bold hover:bg-plan-b hover:text-white transition-colors border border-outline-variant/30">Select</button></div>
+<div class="pt-6 border-t border-outline-variant/30 mt-auto relative z-10"><button class="w-full py-3.5 rounded-full bg-surface-container-high text-on-surface font-bold hover:bg-plan-b hover:text-white transition-colors border border-outline-variant/30" onclick="openSelectModal('Plan B', '₩13.9k/mo')">Select</button></div>
 </div>
 <div class="plan-card plan-c p-6 lg:p-8 rounded-[32px] flex flex-col group relative bg-surface-container-high border-plan-c/40 shadow-[0_0_20px_rgba(139,92,246,0.1)]">
 <div class="absolute inset-0 bg-gradient-to-b from-plan-c/5 to-transparent rounded-[32px] pointer-events-none"></div>
@@ -323,11 +323,11 @@
 <li class="flex items-start gap-3"><span class="material-symbols-outlined text-plan-c text-[20px]" data-icon="check_circle">check_circle</span> <span>12GB High Speed</span></li>
 <li class="flex items-start gap-3"><span class="material-symbols-outlined text-plan-c text-[20px]" data-icon="check_circle">check_circle</span> <span>Unl. at 1Mbps</span></li>
 </ul>
-<div class="pt-6 border-t border-outline-variant/30 mt-auto relative z-10"><button class="w-full py-3.5 rounded-full bg-plan-c text-white font-bold hover:bg-plan-c/90 transition-colors shadow-lg shadow-plan-c/20">Select</button></div>
+<div class="pt-6 border-t border-outline-variant/30 mt-auto relative z-10"><button class="w-full py-3.5 rounded-full bg-plan-c text-white font-bold hover:bg-plan-c/90 transition-colors shadow-lg shadow-plan-c/20" onclick="openSelectModal('Plan C', '₩17.9k/mo')">Select</button></div>
 </div>
-<div class="plan-card plan-d p-6 lg:p-8 rounded-[32px] flex flex-col group relative bg-surface-container-high"><div class="absolute inset-0 bg-gradient-to-b from-plan-d/5 to-transparent rounded-[32px] pointer-events-none"></div><div class="mb-4 relative z-10"><span class="inline-block px-3 py-1 bg-plan-d/10 text-plan-d rounded-full text-label-sm font-bold border border-plan-d/30 uppercase tracking-wider">Power User</span></div><h4 class="font-display font-bold text-[20px] lg:text-[24px] text-plan-d mb-4 relative z-10">Plan D</h4><div class="mb-8 flex items-baseline flex-wrap relative z-10"><span class="text-[32px] lg:text-[36px] font-display font-bold text-white tracking-tight line-through decoration-2 decoration-white/70">₩26.4k</span><span class="text-[14px] text-on-surface-variant font-medium ml-1">/mo</span></div><ul class="space-y-4 mb-10 flex-grow text-[14px] text-on-surface-variant font-medium relative z-10"><li class="flex items-start gap-3"><span class="material-symbols-outlined text-plan-d text-[20px]" data-icon="check_circle">check_circle</span> <span>100 Minutes</span></li><li class="flex items-start gap-3"><span class="material-symbols-outlined text-plan-d text-[20px]" data-icon="check_circle">check_circle</span> <span>100 SMS</span></li><li class="flex items-start gap-3"><span class="material-symbols-outlined text-plan-d text-[20px]" data-icon="check_circle">check_circle</span> <span>25GB High Speed</span></li><li class="flex items-start gap-3"><span class="material-symbols-outlined text-plan-d text-[20px]" data-icon="check_circle">check_circle</span> <span>Unl. at 3Mbps</span></li></ul><div class="pt-6 border-t border-outline-variant/30 mt-auto relative z-10"><button class="w-full py-3.5 rounded-full bg-surface-container-high text-on-surface font-bold hover:bg-plan-d hover:text-white transition-colors border border-outline-variant/30">Select</button></div></div>
-<div class="plan-card plan-e p-6 lg:p-8 rounded-[32px] flex flex-col group relative bg-surface-container-high"><div class="absolute inset-0 bg-gradient-to-b from-plan-e/5 to-transparent rounded-[32px] pointer-events-none"></div><div class="mb-4 relative z-10"><span class="inline-block px-3 py-1 bg-plan-e/10 text-plan-e rounded-full text-label-sm font-bold border border-plan-e/30 uppercase tracking-wider">Premium</span></div><h4 class="font-display font-bold text-[20px] lg:text-[24px] text-plan-e mb-4 relative z-10">Plan E</h4><div class="mb-8 flex items-baseline flex-wrap relative z-10"><span class="text-[32px] lg:text-[36px] font-display font-bold text-white tracking-tight line-through decoration-2 decoration-white/70">₩31.7k</span><span class="text-[14px] text-on-surface-variant font-medium ml-1">/mo</span></div><ul class="space-y-4 mb-10 flex-grow text-[14px] text-on-surface-variant font-medium relative z-10"><li class="flex items-start gap-3"><span class="material-symbols-outlined text-plan-e text-[20px]" data-icon="check_circle">check_circle</span> <span>Unlimited Calls</span></li><li class="flex items-start gap-3"><span class="material-symbols-outlined text-plan-e text-[20px]" data-icon="check_circle">check_circle</span> <span>Unlimited SMS</span></li><li class="flex items-start gap-3"><span class="material-symbols-outlined text-plan-e text-[20px]" data-icon="check_circle">check_circle</span> <span>110GB High Speed</span></li><li class="flex items-start gap-3"><span class="material-symbols-outlined text-plan-e text-[20px]" data-icon="check_circle">check_circle</span> <span>Unl. at 5Mbps</span></li></ul><div class="pt-6 border-t border-outline-variant/30 mt-auto relative z-10"><button class="w-full py-3.5 rounded-full bg-surface-container-high text-on-surface font-bold hover:bg-plan-e hover:text-white transition-colors border border-outline-variant/30">Select</button></div></div>
-<div class="plan-card plan-f p-6 lg:p-8 rounded-[32px] flex flex-col group relative bg-surface-container-high"><div class="absolute inset-0 bg-gradient-to-b from-plan-f/5 to-transparent rounded-[32px] pointer-events-none"></div><div class="mb-4 relative z-10"><span class="inline-block px-3 py-1 bg-plan-f/10 text-plan-f rounded-full text-label-sm font-bold border border-plan-f/30 uppercase tracking-wider">Ultimate</span></div><h4 class="font-display font-bold text-[20px] lg:text-[24px] text-plan-f mb-4 relative z-10">Plan F</h4><div class="mb-8 flex items-baseline flex-wrap relative z-10"><span class="text-[32px] lg:text-[36px] font-display font-bold text-white tracking-tight line-through decoration-2 decoration-white/70">₩46.7k</span><span class="text-[14px] text-on-surface-variant font-medium ml-1">/mo</span></div><ul class="space-y-4 mb-10 flex-grow text-[14px] text-on-surface-variant font-medium relative z-10"><li class="flex items-start gap-3"><span class="material-symbols-outlined text-plan-f text-[20px]" data-icon="check_circle">check_circle</span> <span class="text-on-surface">Unlimited Calls</span></li><li class="flex items-start gap-3"><span class="material-symbols-outlined text-plan-f text-[20px]" data-icon="check_circle">check_circle</span> <span class="text-on-surface">Unlimited SMS</span></li><li class="flex items-start gap-3"><span class="material-symbols-outlined text-plan-f text-[20px]" data-icon="check_circle">check_circle</span> <span class="text-on-surface">250GB High Speed</span></li><li class="flex items-start gap-3"><span class="material-symbols-outlined text-plan-f text-[20px]" data-icon="check_circle">check_circle</span> <span class="text-on-surface">Unl. at 5Mbps</span></li></ul><div class="pt-6 border-t border-outline-variant/30 mt-auto relative z-10"><button class="w-full py-3.5 rounded-full bg-surface-container-high text-on-surface font-bold hover:bg-plan-f hover:text-white transition-colors border border-outline-variant/30">Select</button></div></div>
+<div class="plan-card plan-d p-6 lg:p-8 rounded-[32px] flex flex-col group relative bg-surface-container-high"><div class="absolute inset-0 bg-gradient-to-b from-plan-d/5 to-transparent rounded-[32px] pointer-events-none"></div><div class="mb-4 relative z-10"><span class="inline-block px-3 py-1 bg-plan-d/10 text-plan-d rounded-full text-label-sm font-bold border border-plan-d/30 uppercase tracking-wider">Power User</span></div><h4 class="font-display font-bold text-[20px] lg:text-[24px] text-plan-d mb-4 relative z-10">Plan D</h4><div class="mb-8 flex items-baseline flex-wrap relative z-10"><span class="text-[32px] lg:text-[36px] font-display font-bold text-white tracking-tight line-through decoration-2 decoration-white/70">₩26.4k</span><span class="text-[14px] text-on-surface-variant font-medium ml-1">/mo</span></div><ul class="space-y-4 mb-10 flex-grow text-[14px] text-on-surface-variant font-medium relative z-10"><li class="flex items-start gap-3"><span class="material-symbols-outlined text-plan-d text-[20px]" data-icon="check_circle">check_circle</span> <span>100 Minutes</span></li><li class="flex items-start gap-3"><span class="material-symbols-outlined text-plan-d text-[20px]" data-icon="check_circle">check_circle</span> <span>100 SMS</span></li><li class="flex items-start gap-3"><span class="material-symbols-outlined text-plan-d text-[20px]" data-icon="check_circle">check_circle</span> <span>25GB High Speed</span></li><li class="flex items-start gap-3"><span class="material-symbols-outlined text-plan-d text-[20px]" data-icon="check_circle">check_circle</span> <span>Unl. at 3Mbps</span></li></ul><div class="pt-6 border-t border-outline-variant/30 mt-auto relative z-10"><button class="w-full py-3.5 rounded-full bg-surface-container-high text-on-surface font-bold hover:bg-plan-d hover:text-white transition-colors border border-outline-variant/30" onclick="openSelectModal('Plan D', '₩26.4k/mo')">Select</button></div></div>
+<div class="plan-card plan-e p-6 lg:p-8 rounded-[32px] flex flex-col group relative bg-surface-container-high"><div class="absolute inset-0 bg-gradient-to-b from-plan-e/5 to-transparent rounded-[32px] pointer-events-none"></div><div class="mb-4 relative z-10"><span class="inline-block px-3 py-1 bg-plan-e/10 text-plan-e rounded-full text-label-sm font-bold border border-plan-e/30 uppercase tracking-wider">Premium</span></div><h4 class="font-display font-bold text-[20px] lg:text-[24px] text-plan-e mb-4 relative z-10">Plan E</h4><div class="mb-8 flex items-baseline flex-wrap relative z-10"><span class="text-[32px] lg:text-[36px] font-display font-bold text-white tracking-tight line-through decoration-2 decoration-white/70">₩31.7k</span><span class="text-[14px] text-on-surface-variant font-medium ml-1">/mo</span></div><ul class="space-y-4 mb-10 flex-grow text-[14px] text-on-surface-variant font-medium relative z-10"><li class="flex items-start gap-3"><span class="material-symbols-outlined text-plan-e text-[20px]" data-icon="check_circle">check_circle</span> <span>Unlimited Calls</span></li><li class="flex items-start gap-3"><span class="material-symbols-outlined text-plan-e text-[20px]" data-icon="check_circle">check_circle</span> <span>Unlimited SMS</span></li><li class="flex items-start gap-3"><span class="material-symbols-outlined text-plan-e text-[20px]" data-icon="check_circle">check_circle</span> <span>110GB High Speed</span></li><li class="flex items-start gap-3"><span class="material-symbols-outlined text-plan-e text-[20px]" data-icon="check_circle">check_circle</span> <span>Unl. at 5Mbps</span></li></ul><div class="pt-6 border-t border-outline-variant/30 mt-auto relative z-10"><button class="w-full py-3.5 rounded-full bg-surface-container-high text-on-surface font-bold hover:bg-plan-e hover:text-white transition-colors border border-outline-variant/30" onclick="openSelectModal('Plan E', '₩31.7k/mo')">Select</button></div></div>
+<div class="plan-card plan-f p-6 lg:p-8 rounded-[32px] flex flex-col group relative bg-surface-container-high"><div class="absolute inset-0 bg-gradient-to-b from-plan-f/5 to-transparent rounded-[32px] pointer-events-none"></div><div class="mb-4 relative z-10"><span class="inline-block px-3 py-1 bg-plan-f/10 text-plan-f rounded-full text-label-sm font-bold border border-plan-f/30 uppercase tracking-wider">Ultimate</span></div><h4 class="font-display font-bold text-[20px] lg:text-[24px] text-plan-f mb-4 relative z-10">Plan F</h4><div class="mb-8 flex items-baseline flex-wrap relative z-10"><span class="text-[32px] lg:text-[36px] font-display font-bold text-white tracking-tight line-through decoration-2 decoration-white/70">₩46.7k</span><span class="text-[14px] text-on-surface-variant font-medium ml-1">/mo</span></div><ul class="space-y-4 mb-10 flex-grow text-[14px] text-on-surface-variant font-medium relative z-10"><li class="flex items-start gap-3"><span class="material-symbols-outlined text-plan-f text-[20px]" data-icon="check_circle">check_circle</span> <span class="text-on-surface">Unlimited Calls</span></li><li class="flex items-start gap-3"><span class="material-symbols-outlined text-plan-f text-[20px]" data-icon="check_circle">check_circle</span> <span class="text-on-surface">Unlimited SMS</span></li><li class="flex items-start gap-3"><span class="material-symbols-outlined text-plan-f text-[20px]" data-icon="check_circle">check_circle</span> <span class="text-on-surface">250GB High Speed</span></li><li class="flex items-start gap-3"><span class="material-symbols-outlined text-plan-f text-[20px]" data-icon="check_circle">check_circle</span> <span class="text-on-surface">Unl. at 5Mbps</span></li></ul><div class="pt-6 border-t border-outline-variant/30 mt-auto relative z-10"><button class="w-full py-3.5 rounded-full bg-surface-container-high text-on-surface font-bold hover:bg-plan-f hover:text-white transition-colors border border-outline-variant/30" onclick="openSelectModal('Plan F', '₩46.7k/mo')">Select</button></div></div>
 </div>
 </div>
 </div>
@@ -508,6 +508,37 @@
 <p class="text-sm text-on-surface-variant mb-6">Scan this QR code with your phone's camera</p>
 <div class="bg-white rounded-2xl p-4 mx-auto">
 <img alt="QR code" class="w-full h-auto rounded-lg" id="qr-modal-image" src="">
+</div>
+</div>
+</div>
+<!-- Select Plan Modal -->
+<div class="fixed inset-0 z-[100] hidden items-center justify-center p-6" id="select-modal">
+<div class="absolute inset-0 bg-black/70 backdrop-blur-sm" onclick="closeSelectModal()"></div>
+<div class="glass-panel relative rounded-[32px] p-8 max-w-sm w-full text-center shadow-2xl">
+<button aria-label="Close" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-surface-container-high flex items-center justify-center hover:bg-primary/20 transition-colors" onclick="closeSelectModal()" type="button">
+<span class="material-symbols-outlined text-[20px]" data-icon="close">close</span>
+</button>
+<h3 class="font-display font-bold text-[20px] text-on-surface mb-1" id="select-modal-title">Contact us about Plan A</h3>
+<p class="text-sm text-on-surface-variant mb-6" id="select-modal-subtitle">₩9.9k/mo — choose how you'd like to reach us</p>
+<div class="grid grid-cols-2 gap-4">
+<button class="glass-panel flex flex-col items-center p-6 rounded-[24px] hover:-translate-y-1 hover:shadow-[0_10px_40px_rgba(37,211,102,0.15)] transition-all group" onclick="contactViaWhatsApp()" type="button">
+<div class="w-12 h-12 bg-[#25D366]/20 text-[#25D366] rounded-2xl flex items-center justify-center mb-3 group-hover:scale-110 transition-transform"><span class="material-symbols-outlined text-[24px]" data-icon="chat">chat</span></div>
+<span class="font-bold text-on-surface text-sm">WhatsApp</span>
+</button>
+<button class="glass-panel flex flex-col items-center p-6 rounded-[24px] hover:-translate-y-1 hover:shadow-[0_10px_40px_rgba(225,191,255,0.15)] transition-all group" onclick="contactViaInstagram()" type="button">
+<div class="w-12 h-12 bg-tertiary/20 text-tertiary rounded-2xl flex items-center justify-center mb-3 group-hover:scale-110 transition-transform"><span class="material-symbols-outlined text-[24px]" data-icon="alternate_email">alternate_email</span></div>
+<span class="font-bold text-on-surface text-sm">Instagram</span>
+</button>
+<button class="glass-panel flex flex-col items-center p-6 rounded-[24px] opacity-40 cursor-not-allowed relative" disabled type="button">
+<div class="w-12 h-12 bg-[#FEE500]/20 text-[#FEE500] rounded-2xl flex items-center justify-center mb-3"><span class="material-symbols-outlined text-[24px]" data-icon="sms">sms</span></div>
+<span class="font-bold text-on-surface text-sm">KakaoTalk</span>
+<span class="text-[10px] text-on-surface-variant mt-1">Coming soon</span>
+</button>
+<button class="glass-panel flex flex-col items-center p-6 rounded-[24px] opacity-40 cursor-not-allowed relative" disabled type="button">
+<div class="w-12 h-12 bg-[#07C160]/20 text-[#07C160] rounded-2xl flex items-center justify-center mb-3"><span class="material-symbols-outlined text-[24px]" data-icon="forum">forum</span></div>
+<span class="font-bold text-on-surface text-sm">WeChat</span>
+<span class="text-[10px] text-on-surface-variant mt-1">Coming soon</span>
+</button>
 </div>
 </div>
 </div>
