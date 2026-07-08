@@ -57,8 +57,50 @@ function closeQrModal() {
 document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') {
         closeQrModal();
+        closeSelectModal();
     }
 });
+
+const BUSINESS_WHATSAPP = '821096792052'; // +82 10-9679-2052, no leading zero, no symbols
+const BUSINESS_INSTAGRAM = '365himobile';
+
+let selectedPlanName = '';
+let selectedPlanPrice = '';
+
+function openSelectModal(planName, planPrice) {
+    selectedPlanName = planName;
+    selectedPlanPrice = planPrice;
+
+    const modal = document.getElementById('select-modal');
+    const title = document.getElementById('select-modal-title');
+    const subtitle = document.getElementById('select-modal-subtitle');
+
+    title.textContent = 'Contact us about ' + planName;
+    subtitle.textContent = planPrice + " — choose how you'd like to reach us";
+
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeSelectModal() {
+    const modal = document.getElementById('select-modal');
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+    document.body.style.overflow = '';
+}
+
+function contactViaWhatsApp() {
+    const message = `Hi, I'd like to sign up for ${selectedPlanName} - ${selectedPlanPrice}`;
+    const url = `https://wa.me/${BUSINESS_WHATSAPP}?text=${encodeURIComponent(message)}`;
+    window.open(url, '_blank');
+    closeSelectModal();
+}
+
+function contactViaInstagram() {
+    window.open(`https://instagram.com/${BUSINESS_INSTAGRAM}`, '_blank');
+    closeSelectModal();
+}
 
 function toggleMobileMenu() {
     const menu = document.getElementById('mobile-menu');
