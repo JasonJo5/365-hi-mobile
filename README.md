@@ -6,15 +6,13 @@ A landing page for a Korean SIM/eSIM provider, built with plain HTML, CSS, and J
 
 ```
 365-hi-mobile/
-├── index.html      # Page structure and content
-├── styles.css       # Custom CSS (glassmorphism, gradients, animations)
-├── script.js        # FAQ accordion, tab switching, QR modal, mobile menu logic
+├── index.html            # Page structure and content
+├── styles.css             # Custom CSS — theme variables (light/dark), glassmorphism, animations
+├── script.js              # Language switching, theme toggle, tab switching, modals, reviews
 ├── assets/
-│   ├── qr-whatsapp.png    # WhatsApp QR code
 │   ├── qr-kakao.png       # KakaoTalk QR code
-│   ├── qr-wechat.png      # WeChat QR code
-│   └── qr-instagram.png   # Instagram QR code
-└── README.md         # This file
+│   └── qr-wechat.png      # WeChat QR code
+└── README.md              # This file
 ```
 
 No build step is required — Tailwind and the fonts load from CDNs, so the site runs as static files.
@@ -34,24 +32,29 @@ No build step is required — Tailwind and the fonts load from CDNs, so the site
 
    *(Alternative without the extension: just double-click `index.html` to open it directly in your browser — it'll work, but won't auto-refresh on edits.)*
 
-## Notes on what's included
+## What's included
 
-- **Header** with logo and nav links (Plans / FAQ / Contact / Location) that smooth-scroll to each section, plus a mobile hamburger menu with the same links
-- **Hero section** with two entry cards (ARC holder vs. no ARC)
-- **Plans section** with a Prepaid/Postpaid tab switcher (5 prepaid plans, 6 postpaid plans)
-- **Comparison table** (Prepaid vs Postpaid features)
-- **FAQ accordion** (click to expand/collapse)
-- **Contact section** — clicking WhatsApp, KakaoTalk, WeChat, or Instagram opens a popup showing that platform's QR code (press Escape or click outside to close)
-- **Store location** section with address, hours, and a map placeholder linking out to Naver Maps
-- **Footer** with site links and language switcher (links are placeholders — see "Next steps" below)
+- **Multi-language support (EN / 한국어 / 中文)** — switch via the buttons in the header (desktop nav and mobile menu) or the footer. Choice is remembered across visits (localStorage). Covers nav, hero, how-it-works, plans, comparison table, FAQ, contact, location, and footer.
+- **Light / Dark mode** — toggle switch in the header (desktop and mobile). Defaults to the visitor's OS preference on first visit, then remembers their choice. Built on CSS custom properties, so the whole Material-style color system (surfaces, glass panels, plan cards, gradients) adapts automatically.
+- **Header** with nav links (Plans / FAQ / Contact / Location) that smooth-scroll to each section, plus a mobile hamburger menu with the same links, language switcher, and theme toggle.
+- **Hero section** with two entry cards — "I have an ARC" scrolls straight to **Postpaid** plans, "No ARC" scrolls to **Prepaid** plans.
+- **Plans section** with a Prepaid/Postpaid tab switcher. Both prepaid and postpaid cards now show an exact **Total Price** row (postpaid prices no longer show a strikethrough — that was left over from an unfinished "sale price" pattern).
+- **Comparison table**, **testimonials**, **FAQ accordion**, and a live **customer reviews** section (wired for Firebase — see note below).
+- **Contact section** — WhatsApp and Instagram buttons open a direct chat/profile link in a new tab. KakaoTalk and WeChat (which don't have a universal web link) still show a scannable QR code popup.
+- **Store location** with an embedded map and a clearly labeled "Open in Naver Maps" link to the real address.
+- **Footer** with product/resource/company links and a copyright line.
+
+## Notes on Firebase reviews
+
+The customer reviews section expects a Firebase project (Firestore) — fill in `firebaseConfig` near the top of `script.js` with your own project's credentials. Until that's filled in, the section will just show "Reviews are not connected yet."
 
 ## Next steps you may want
 
-These weren't functional in the original mockup either, so they're placeholders for now — happy to wire any of these up:
-- Making "Select Plan" buttons actually do something (e.g., open a checkout flow or contact form)
-- Adding real map coordinates for the store location (currently an image placeholder linking to a Naver Maps URL)
+- Making the footer's Products/Resources/Company links point to real pages
+- Filling in the Firebase config so reviews actually save/load
 - Replacing the CDN Tailwind script with a proper build step (recommended if you plan to deploy — see note below)
 
 ## Deployment note
 
 Right now this uses the Tailwind **Play CDN** (`cdn.tailwindcss.com`), which is great for prototyping/local dev but isn't recommended for production (it's slower and shows a console warning). When you're ready to deploy, let me know and I can set you up with a proper Tailwind build via npm — it's a quick conversion.
+
