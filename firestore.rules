@@ -1,0 +1,57 @@
+rules_version = '2';
+
+// ============================================================================
+// Firestore Security Rules — 365 Hi Mobile customer portal
+//
+// HOW TO APPLY THESE:
+//   Firebase Console > Firestore Database > Rules tab > paste this in > Publish.
+//   (Or via the Firebase CLI: `firebase deploy --only firestore:rules`)
+//
+// WHAT THIS DOES:
+//   - Document ID for each customer = their phone number in E.164 format
+//     (e.g. "+821012345678").
+//   - The account portal no longer uses Firebase Phone Auth — customers
+//     confirm their identity with phone number + birthdate instead, checked
+//     by a server-side Netlify function (netlify/functions/lookup-customer.js)
+//     using the Firebase Admin SDK. Since there's no Firebase-Auth-verified
+//     identity to key rules off of on the client side anymore, client reads
+//     of /customers are denied entirely — the Admin SDK bypasses these rules,
+//     so the Netlify function can still read/write normally.
+//   - Nobody can read or write /customers (or planHistory) directly from the
+//     browser at all. All access goes through the Netlify function (reads)
+//     or the Google Sheets sync script / Firebase Console (writes).
+// ============================================================================
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    match /customers/{phoneNumber} {
+      allow read, write: if false;
+
+      match /planHistory/{entryId} {
+        allow read, write: if false;
+      }
+    }
+
+    // Existing reviews feature (public read, public create — no auth required)
+    match /reviews/{reviewId} {
+      allow read: if true;
+      allow create: if request.resource.data.keys().hasAll(['name', 'rating', 'comment', 'timestamp'])
+                    && request.resource.data.rating is number
+                    && request.resource.data.rating >= 1
+                    && request.resource.data.rating <= 5
+                    && request.resource.data.name is string
+                    && request.resource.data.name.size() > 0
+                    && request.resource.data.name.size() < 100
+                    && request.resource.data.comment is string
+                    && request.resource.data.comment.size() > 0
+                    && request.resource.data.comment.size() < 1000;
+      allow update, delete: if false;
+    }
+
+    // Deny everything else by default.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
