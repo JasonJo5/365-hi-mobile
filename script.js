@@ -1,6 +1,6 @@
 const translations = {
     en: {
-        nav_plans: "PLANS", nav_faq: "FAQ", nav_contact: "CONTACT", nav_location: "LOCATION",
+        nav_plans: "PLANS", nav_faq: "FAQ", nav_contact: "CONTACT", nav_location: "LOCATION", nav_account: "MY ACCOUNT",
         hero_badge: "🇰🇷 Korea's Fast & Reliable SIM Provider",
         hero_title: "Stay Connected Anywhere in <br><span class=\"gradient-text\">Korea.</span>",
         hero_subtitle: "Choose the right SIM plan for your stay. Do you have a Korean Resident Card?",
@@ -37,7 +37,7 @@ const translations = {
         footer_copyright: "© 2024 365 Hi Mobile. All rights reserved."
     },
     ko: {
-        nav_plans: "요금제", nav_faq: "자주 묻는 질문", nav_contact: "문의하기", nav_location: "매장 위치",
+        nav_plans: "요금제", nav_faq: "자주 묻는 질문", nav_contact: "문의하기", nav_location: "매장 위치", nav_account: "내 계정",
         hero_badge: "🇰🇷 한국의 빠르고 믿을 수 있는 SIM 제공업체",
         hero_title: "한국 어디서나 연결하세요<br><span class=\"gradient-text\">지금.</span>",
         hero_subtitle: "체류에 맞는 SIM 요금제를 선택하세요. 외국인등록증(ARC)이 있으신가요?",
@@ -74,7 +74,7 @@ const translations = {
         footer_copyright: "© 2024 365 Hi Mobile. All rights reserved."
     },
     zh: {
-        nav_plans: "套餐", nav_faq: "常见问题", nav_contact: "联系我们", nav_location: "门店位置",
+        nav_plans: "套餐", nav_faq: "常见问题", nav_contact: "联系我们", nav_location: "门店位置", nav_account: "我的账户",
         hero_badge: "🇰🇷 韩国快速可靠的SIM卡服务商",
         hero_title: "随时随地连接韩国<br><span class=\"gradient-text\">网络。</span>",
         hero_subtitle: "选择适合您行程的SIM套餐。您有韩国外国人登录证(ARC)吗？",
@@ -175,15 +175,9 @@ function toggleTheme() {
 })();
 
 // ===== Customer Reviews (Firebase Firestore) =====
-// TODO: replace with your own Firebase project config (see setup instructions provided)
-const firebaseConfig = {
-    apiKey: "YOUR_API_KEY",
-    authDomain: "YOUR_PROJECT.firebaseapp.com",
-    projectId: "YOUR_PROJECT_ID",
-    storageBucket: "YOUR_PROJECT.appspot.com",
-    messagingSenderId: "YOUR_SENDER_ID",
-    appId: "YOUR_APP_ID"
-};
+// Config now lives in firebase-config.js (shared with account.html) — fill in your
+// project's real credentials there.
+const firebaseConfig = window.FIREBASE_CONFIG || {};
 
 let db = null;
 try {
@@ -233,6 +227,7 @@ function renderStars(container, rating) {
 async function loadReviews() {
     const list = document.getElementById('reviews-list');
     const loading = document.getElementById('reviews-loading');
+    if (!list) return; // this page doesn't have a reviews section
     if (!db) {
         if (loading) loading.textContent = 'Reviews are not connected yet.';
         return;
@@ -465,6 +460,9 @@ function switchTab(tab) {
     const postpaidBtn = document.getElementById('tab-postpaid');
     const prepaidSec = document.getElementById('section-prepaid');
     const postpaidSec = document.getElementById('section-postpaid');
+
+    // Guard: this page (e.g. account.html) doesn't have the plans tab UI — nothing to do.
+    if (!prepaidBtn || !postpaidBtn || !prepaidSec || !postpaidSec) return;
 
     if (tab === 'prepaid') {
         prepaidBtn.classList.add('bg-primary', 'text-surface-container-lowest', 'shadow-md');
