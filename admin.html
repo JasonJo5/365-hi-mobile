@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Staff Admin | 365 Hi Mobile</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Sora:wght@100..800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<meta name="robots" content="noindex, nofollow">
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "outline": "rgb(var(--color-outline) / <alpha-value>)",
+                "secondary-container": "rgb(var(--color-secondary-container) / <alpha-value>)",
+                "surface-tint": "rgb(var(--color-surface-tint) / <alpha-value>)",
+                "inverse-primary": "rgb(var(--color-inverse-primary) / <alpha-value>)",
+                "tertiary": "rgb(var(--color-tertiary) / <alpha-value>)",
+                "on-surface-variant": "rgb(var(--color-on-surface-variant) / <alpha-value>)",
+                "surface-container-high": "rgb(var(--color-surface-container-high) / <alpha-value>)",
+                "on-error-container": "rgb(var(--color-on-error-container) / <alpha-value>)",
+                "surface-container-lowest": "rgb(var(--color-surface-container-lowest) / <alpha-value>)",
+                "secondary-fixed": "#6ffbbe",
+                "on-secondary": "rgb(var(--color-on-secondary) / <alpha-value>)",
+                "surface-container": "rgb(var(--color-surface-container) / <alpha-value>)",
+                "on-tertiary-fixed": "#2c0051",
+                "primary-fixed-dim": "#7bd0ff",
+                "error": "rgb(var(--color-error) / <alpha-value>)",
+                "surface": "rgb(var(--color-surface) / <alpha-value>)",
+                "surface-bright": "rgb(var(--color-surface-bright) / <alpha-value>)",
+                "primary-container": "rgb(var(--color-primary-container) / <alpha-value>)",
+                "on-primary": "rgb(var(--color-on-primary) / <alpha-value>)",
+                "tertiary-container": "rgb(var(--color-tertiary-container) / <alpha-value>)",
+                "on-secondary-container": "rgb(var(--color-on-secondary-container) / <alpha-value>)",
+                "on-secondary-fixed": "#002113",
+                "outline-variant": "rgb(var(--color-outline-variant) / <alpha-value>)",
+                "error-container": "rgb(var(--color-error-container) / <alpha-value>)",
+                "surface-variant": "rgb(var(--color-surface-variant) / <alpha-value>)",
+                "primary-fixed": "#c4e7ff",
+                "on-primary-fixed-variant": "#004c69",
+                "on-error": "rgb(var(--color-on-error) / <alpha-value>)",
+                "tertiary-fixed-dim": "#ddb7ff",
+                "background": "rgb(var(--color-background) / <alpha-value>)",
+                "on-secondary-fixed-variant": "#005236",
+                "on-surface": "rgb(var(--color-on-surface) / <alpha-value>)",
+                "surface-dim": "rgb(var(--color-surface-dim) / <alpha-value>)",
+                "surface-container-highest": "rgb(var(--color-surface-container-highest) / <alpha-value>)",
+                "on-primary-container": "rgb(var(--color-on-primary-container) / <alpha-value>)",
+                "secondary-fixed-dim": "#4edea3",
+                "primary": "rgb(var(--color-primary) / <alpha-value>)",
+                "on-tertiary-container": "rgb(var(--color-on-tertiary-container) / <alpha-value>)",
+                "inverse-on-surface": "rgb(var(--color-inverse-on-surface) / <alpha-value>)",
+                "on-tertiary-fixed-variant": "#6900b3",
+                "on-tertiary": "rgb(var(--color-on-tertiary) / <alpha-value>)",
+                "on-primary-fixed": "#001e2c",
+                "secondary": "rgb(var(--color-secondary) / <alpha-value>)",
+                "on-background": "rgb(var(--color-on-background) / <alpha-value>)",
+                "tertiary-fixed": "#f0dbff",
+                "surface-container-low": "rgb(var(--color-surface-container-low) / <alpha-value>)",
+                "inverse-surface": "rgb(var(--color-inverse-surface) / <alpha-value>)"
+        },
+        "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+        "spacing": { "container-max": "1280px", "gutter": "24px", "margin-desktop": "64px", "margin-mobile": "20px", "base": "8px" },
+        "fontFamily": { "sans": ["Geist", "sans-serif"], "display": ["Sora", "sans-serif"] }
+      },
+    },
+  }
+</script>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-surface-container-lowest text-on-surface font-sans overflow-x-hidden min-h-screen">
+
+<header class="w-full z-50 bg-surface-container-lowest/70 backdrop-blur-xl border-b border-white/5 relative">
+<div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 max-w-container-max mx-auto h-20">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-tertiary flex items-center justify-center shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-surface-container-lowest text-xl" data-icon="admin_panel_settings">admin_panel_settings</span>
+</div>
+<span class="font-display text-xl font-bold text-on-surface tracking-tight">Staff Admin</span>
+</div>
+<button class="hidden text-sm font-bold text-on-surface-variant hover:text-error transition-colors flex items-center gap-1" id="signout-btn" onclick="adminSignOut()" type="button">
+<span class="material-symbols-outlined text-[18px]" data-icon="logout">logout</span>
+<span>Sign out</span>
+</button>
+</div>
+</header>
+
+<main class="relative z-10 max-w-3xl mx-auto px-margin-mobile py-12">
+
+<!-- ===== Login ===== -->
+<section id="admin-login">
+<div class="max-w-sm mx-auto glass-panel rounded-[24px] p-6 md:p-8">
+<h1 class="text-headline-lg font-display font-bold text-on-surface mb-2 text-center">Staff Login</h1>
+<p class="text-on-surface-variant text-sm mb-6 text-center">Enter the shared staff password to continue.</p>
+<input class="w-full bg-surface-container-high rounded-xl border border-outline-variant/30 px-4 py-3 text-on-surface mb-4 focus:outline-none focus:border-primary transition-colors" id="admin-password-input" placeholder="Password" type="password">
+<p class="hidden text-error text-sm mb-4" id="login-error"></p>
+<button class="w-full py-3.5 rounded-full bg-primary text-on-primary font-bold hover:opacity-90 transition-opacity" id="login-btn" onclick="adminLogin()" type="button">Log In</button>
+</div>
+</section>
+
+<!-- ===== Panel ===== -->
+<section class="hidden" id="admin-panel">
+
+<div class="flex gap-2 mb-8 bg-surface-container-high rounded-full p-1 w-fit">
+<button class="admin-tab-btn px-5 py-2 rounded-full text-sm font-bold transition-colors bg-primary text-on-primary" data-tab="queue" onclick="switchTab('queue')" type="button">Today's Queue</button>
+<button class="admin-tab-btn px-5 py-2 rounded-full text-sm font-bold transition-colors text-on-surface-variant" data-tab="customers" onclick="switchTab('customers')" type="button">Customers</button>
+</div>
+
+<!-- Queue tab -->
+<div id="tab-queue">
+<div class="flex gap-3 mb-6">
+<input class="flex-1 bg-surface-container-high rounded-xl border border-outline-variant/30 px-4 py-2.5 text-on-surface placeholder:text-on-surface-variant/60 focus:outline-none focus:border-primary transition-colors" id="queue-search-input" oninput="loadQueue()" placeholder="Search by name or phone..." type="text">
+<button class="px-4 py-2.5 rounded-xl bg-surface-container-high border border-outline-variant/30 hover:border-primary transition-colors" onclick="loadQueue()" title="Refresh" type="button">
+<span class="material-symbols-outlined text-[20px]" data-icon="refresh">refresh</span>
+</button>
+</div>
+<div class="space-y-3" id="queue-list">
+<p class="text-on-surface-variant text-sm text-center py-8">Loading...</p>
+</div>
+</div>
+
+<!-- Customers tab -->
+<div class="hidden" id="tab-customers">
+<div class="flex gap-3 mb-6">
+<input class="flex-1 bg-surface-container-high rounded-xl border border-outline-variant/30 px-4 py-2.5 text-on-surface placeholder:text-on-surface-variant/60 focus:outline-none focus:border-primary transition-colors" id="customer-search-input" placeholder="Search by phone or name..." type="text">
+<button class="px-4 py-2.5 rounded-xl bg-primary text-on-primary font-bold text-sm" onclick="searchCustomers()" type="button">Search</button>
+<button class="px-4 py-2.5 rounded-xl bg-surface-container-high border border-outline-variant/30 hover:border-primary transition-colors flex items-center gap-1.5 text-sm font-bold" onclick="openNewCustomerModal()" type="button">
+<span class="material-symbols-outlined text-[18px]" data-icon="person_add">person_add</span>
+<span class="hidden sm:inline">New</span>
+</button>
+</div>
+<div class="space-y-3" id="customer-results">
+<p class="text-on-surface-variant text-sm text-center py-8">Search for a customer by phone number or name.</p>
+</div>
+</div>
+
+</section>
+
+</main>
+
+<!-- ===== Activate / Renew / New customer modal ===== -->
+<div class="fixed inset-0 z-[100] hidden items-center justify-center p-4 overflow-y-auto" id="upsert-modal">
+<div class="absolute inset-0 bg-black/70 backdrop-blur-sm" onclick="closeUpsertModal()"></div>
+<div class="glass-panel relative rounded-[24px] p-6 md:p-8 max-w-lg w-full my-8 max-h-[90vh] overflow-y-auto">
+<button aria-label="Close" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-surface-container-high flex items-center justify-center hover:bg-primary/20 transition-colors" onclick="closeUpsertModal()" type="button">
+<span class="material-symbols-outlined text-[20px]" data-icon="close">close</span>
+</button>
+<h3 class="font-display font-bold text-[20px] text-on-surface mb-1" id="upsert-modal-title">Activate Customer</h3>
+<p class="text-sm text-on-surface-variant mb-6" id="upsert-modal-subtitle">Fill in the details collected in store.</p>
+
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div class="sm:col-span-2">
+<label class="block text-label-sm font-bold text-on-surface-variant uppercase tracking-wide mb-1.5">Name</label>
+<input class="w-full bg-surface-container-high rounded-xl border border-outline-variant/30 px-4 py-2.5 text-on-surface focus:outline-none focus:border-primary transition-colors" id="field-name" type="text">
+</div>
+<div>
+<label class="block text-label-sm font-bold text-on-surface-variant uppercase tracking-wide mb-1.5">Phone Number</label>
+<input class="w-full bg-surface-container-high rounded-xl border border-outline-variant/30 px-4 py-2.5 text-on-surface focus:outline-none focus:border-primary transition-colors" id="field-phone" placeholder="+8210..." type="text">
+</div>
+<div>
+<label class="block text-label-sm font-bold text-on-surface-variant uppercase tracking-wide mb-1.5">Birthdate</label>
+<input class="w-full bg-surface-container-high rounded-xl border border-outline-variant/30 px-4 py-2.5 text-on-surface focus:outline-none focus:border-primary transition-colors" id="field-birthdate" type="date">
+</div>
+<div>
+<label class="block text-label-sm font-bold text-on-surface-variant uppercase tracking-wide mb-1.5">ARC Number</label>
+<input class="w-full bg-surface-container-high rounded-xl border border-outline-variant/30 px-4 py-2.5 text-on-surface focus:outline-none focus:border-primary transition-colors" id="field-arc" type="text">
+</div>
+<div>
+<label class="block text-label-sm font-bold text-on-surface-variant uppercase tracking-wide mb-1.5">Country</label>
+<input class="w-full bg-surface-container-high rounded-xl border border-outline-variant/30 px-4 py-2.5 text-on-surface focus:outline-none focus:border-primary transition-colors" id="field-country" type="text">
+</div>
+<div>
+<label class="block text-label-sm font-bold text-on-surface-variant uppercase tracking-wide mb-1.5">Carrier</label>
+<select class="w-full bg-surface-container-high rounded-xl border border-outline-variant/30 px-4 py-2.5 text-on-surface focus:outline-none focus:border-primary transition-colors" id="field-carrier">
+<option value="SKT">SKT</option>
+<option value="KT">KT</option>
+<option value="LG U+">LG U+</option>
+</select>
+</div>
+<div>
+<label class="block text-label-sm font-bold text-on-surface-variant uppercase tracking-wide mb-1.5">SIM Type</label>
+<select class="w-full bg-surface-container-high rounded-xl border border-outline-variant/30 px-4 py-2.5 text-on-surface focus:outline-none focus:border-primary transition-colors" id="field-sim-type">
+<option value="eSIM">eSIM</option>
+<option value="Physical SIM">Physical SIM</option>
+</select>
+</div>
+<div class="sm:col-span-2">
+<label class="block text-label-sm font-bold text-on-surface-variant uppercase tracking-wide mb-1.5">Plan Name</label>
+<input class="w-full bg-surface-container-high rounded-xl border border-outline-variant/30 px-4 py-2.5 text-on-surface focus:outline-none focus:border-primary transition-colors" id="field-plan-name" type="text">
+</div>
+<div>
+<label class="block text-label-sm font-bold text-on-surface-variant uppercase tracking-wide mb-1.5">Contract Start</label>
+<input class="w-full bg-surface-container-high rounded-xl border border-outline-variant/30 px-4 py-2.5 text-on-surface focus:outline-none focus:border-primary transition-colors" id="field-contract-start" type="date">
+</div>
+<div>
+<label class="block text-label-sm font-bold text-on-surface-variant uppercase tracking-wide mb-1.5">Contract End</label>
+<input class="w-full bg-surface-container-high rounded-xl border border-outline-variant/30 px-4 py-2.5 text-on-surface focus:outline-none focus:border-primary transition-colors" id="field-contract-end" type="date">
+</div>
+<div class="sm:col-span-2">
+<label class="block text-label-sm font-bold text-on-surface-variant uppercase tracking-wide mb-1.5">First Purchase Date</label>
+<input class="w-full bg-surface-container-high rounded-xl border border-outline-variant/30 px-4 py-2.5 text-on-surface focus:outline-none focus:border-primary transition-colors" id="field-first-purchase" type="date">
+</div>
+</div>
+
+<p class="hidden text-error text-sm mt-4" id="upsert-error"></p>
+
+<div class="flex gap-3 mt-6">
+<button class="flex-1 py-3 rounded-full border border-outline-variant/30 text-on-surface-variant font-bold hover:text-on-surface transition-colors" onclick="closeUpsertModal()" type="button">Cancel</button>
+<button class="flex-1 py-3 rounded-full bg-primary text-on-primary font-bold hover:opacity-90 transition-opacity" id="upsert-save-btn" onclick="saveUpsert()" type="button">Save</button>
+</div>
+</div>
+</div>
+
+<!-- Toast -->
+<div class="fixed bottom-6 left-1/2 -translate-x-1/2 z-[200] hidden" id="toast">
+<div class="bg-secondary text-on-secondary px-5 py-3 rounded-full font-bold text-sm shadow-lg" id="toast-message"></div>
+</div>
+
+<script src="admin.js"></script>
+</body>
+</html>
