@@ -103,7 +103,9 @@ function switchTab(tab) {
     });
     document.getElementById('tab-queue').classList.toggle('hidden', tab !== 'queue');
     document.getElementById('tab-customers').classList.toggle('hidden', tab !== 'customers');
+    document.getElementById('tab-all-customers').classList.toggle('hidden', tab !== 'all-customers');
     if (tab === 'queue') loadQueue();
+    if (tab === 'all-customers') loadAllCustomers();
 }
 
 // ---------- queue ----------
@@ -139,10 +141,27 @@ function renderQueue(orders) {
             '<p class="text-on-surface-variant text-sm truncate">' + escapeHtml(order.phoneNumber || '') + ' &middot; ' + escapeHtml(order.planName || '') + '</p>' +
             '<p class="text-on-surface-variant/70 text-xs mt-0.5">' + escapeHtml(paymentLabel) + '</p>' +
             '</div>' +
-            '<button class="shrink-0 px-4 py-2 rounded-full bg-primary text-on-primary font-bold text-sm" onclick="openActivateModal(' + "'" + order.id + "'" + ')" type="button">Activate</button>' +
+            '<div class="flex gap-2 shrink-0">' +
+            '<button class="px-4 py-2 rounded-full bg-primary text-on-primary font-bold text-sm" onclick="openActivateModal(' + "'" + order.id + "'" + ')" type="button">Activate</button>' +
+            '<button class="w-9 h-9 rounded-full bg-surface-container-high border border-outline-variant/30 hover:border-error hover:text-error flex items-center justify-center" onclick="dismissOrder(' + "'" + order.id + "'" + ')" title="Dismiss (no-show / duplicate / cancelled)" type="button">' +
+            '<span class="material-symbols-outlined text-[18px]" data-icon="close">close</span>' +
+            '</button>' +
+            '</div>' +
             '</div>'
         );
     }).join('');
+}
+
+function dismissOrder(orderId) {
+    if (!confirm('Dismiss this reservation? This removes it from the queue permanently.')) return;
+    adminFetch('/.netlify/functions/admin-delete-order', { orderId: orderId })
+        .then(function () {
+            showToast('Reservation dismissed.');
+            loadQueue();
+        })
+        .catch(function (error) {
+            if (error.message !== 'unauthorized') showToast(error.message);
+        });
 }
 
 // ---------- customers ----------
@@ -180,10 +199,119 @@ function renderCustomerResults(customers) {
             '<p class="text-on-surface-variant text-sm truncate">' + escapeHtml(c.phoneNumber || '') + ' &middot; ' + escapeHtml(c.currentPlanName || '—') + '</p>' +
             '<p class="text-xs mt-0.5 ' + (isActive ? 'text-secondary' : 'text-error') + '">' + (isActive ? 'Active' : 'Expired') + '</p>' +
             '</div>' +
-            '<button class="shrink-0 px-4 py-2 rounded-full bg-surface-container-high border border-outline-variant/30 hover:border-primary transition-colors font-bold text-sm" onclick="openRenewModal(window.__customer_' + i + ')" type="button">Edit / Renew</button>' +
+            '<div class="flex gap-2 shrink-0">' +
+            '<button class="px-4 py-2 rounded-full bg-surface-container-high border border-outline-variant/30 hover:border-primary transition-colors font-bold text-sm" onclick="openRenewModal(window.__customer_' + i + ')" type="button">Edit / Renew</button>' +
+            '<button class="w-9 h-9 rounded-full bg-surface-container-high border border-outline-variant/30 hover:border-error hover:text-error flex items-center justify-center" onclick="deleteCustomer(' + "'" + c.phoneNumber + "'" + ')" title="Delete customer" type="button">' +
+            '<span class="material-symbols-outlined text-[18px]" data-icon="delete">delete</span>' +
+            '</button>' +
+            '</div>' +
             '</div>'
         );
     }).join('');
+}
+
+function deleteCustomer(phoneNumber) {
+    if (!confirm('Permanently delete this customer and their plan history? This cannot be undone.')) return;
+    adminFetch('/.netlify/functions/admin-delete-customer', { phoneNumber: phoneNumber })
+        .then(function () {
+            showToast('Customer deleted.');
+            const customerSearchInput = document.getElementById('customer-search-input');
+            if (customerSearchInput.value.trim()) searchCustomers();
+            if (!document.getElementById('tab-all-customers').classList.contains('hidden')) loadAllCustomers();
+        })
+        .catch(function (error) {
+            if (error.message !== 'unauthorized') showToast(error.message);
+        });
+}
+
+// ---------- all customers (table + CSV export) ----------
+
+let allCustomersCache = [];
+
+function loadAllCustomers() {
+    const wrap = document.getElementById('all-customers-table-wrap');
+    wrap.innerHTML = '<p class="text-on-surface-variant text-sm text-center py-8">Loading...</p>';
+
+    adminFetch('/.netlify/functions/admin-list-customers', {})
+        .then(function (data) {
+            allCustomersCache = data.customers || [];
+            document.getElementById('all-customers-count').textContent =
+                allCustomersCache.length + ' customer' + (allCustomersCache.length === 1 ? '' : 's');
+            renderCustomersTable(allCustomersCache);
+        })
+        .catch(function (error) {
+            if (error.message === 'unauthorized') return;
+            wrap.innerHTML = '<p class="text-error text-sm text-center py-8">' + escapeHtml(error.message) + '</p>';
+        });
+}
+
+function renderCustomersTable(customers) {
+    const wrap = document.getElementById('all-customers-table-wrap');
+    if (!customers.length) {
+        wrap.innerHTML = '<p class="text-on-surface-variant text-sm text-center py-8">No customers yet.</p>';
+        return;
+    }
+
+    const rows = customers.map(function (c, i) {
+        window['__customer_' + i] = c;
+        const isActive = !c.contractEnd || new Date(c.contractEnd) >= new Date();
+        return (
+            '<tr class="border-b border-outline-variant/10 last:border-0">' +
+            '<td class="px-4 py-3 font-bold text-on-surface whitespace-nowrap">' + escapeHtml(c.name || '—') + '</td>' +
+            '<td class="px-4 py-3 text-on-surface-variant whitespace-nowrap">' + escapeHtml(c.phoneNumber || '—') + '</td>' +
+            '<td class="px-4 py-3 text-on-surface-variant whitespace-nowrap">' + escapeHtml(c.currentPlanName || '—') + '</td>' +
+            '<td class="px-4 py-3 whitespace-nowrap"><span class="text-xs font-bold ' + (isActive ? 'text-secondary' : 'text-error') + '">' + (isActive ? 'Active' : 'Expired') + '</span></td>' +
+            '<td class="px-4 py-3 text-on-surface-variant whitespace-nowrap">' + escapeHtml(c.contractEnd || '—') + '</td>' +
+            '<td class="px-4 py-3 whitespace-nowrap">' +
+            '<div class="flex gap-2">' +
+            '<button class="px-3 py-1.5 rounded-full bg-surface-container-high border border-outline-variant/30 hover:border-primary transition-colors font-bold text-xs" onclick="openRenewModal(window.__customer_' + i + ')" type="button">Edit</button>' +
+            '<button class="w-8 h-8 rounded-full bg-surface-container-high border border-outline-variant/30 hover:border-error hover:text-error flex items-center justify-center" onclick="deleteCustomer(' + "'" + c.phoneNumber + "'" + ')" title="Delete customer" type="button">' +
+            '<span class="material-symbols-outlined text-[16px]" data-icon="delete">delete</span>' +
+            '</button>' +
+            '</div>' +
+            '</td>' +
+            '</tr>'
+        );
+    }).join('');
+
+    wrap.innerHTML =
+        '<table class="w-full text-sm">' +
+        '<thead><tr class="text-left text-label-sm text-on-surface-variant uppercase tracking-wide border-b border-outline-variant/20">' +
+        '<th class="px-4 py-3">Name</th><th class="px-4 py-3">Phone</th><th class="px-4 py-3">Plan</th>' +
+        '<th class="px-4 py-3">Status</th><th class="px-4 py-3">Contract End</th><th class="px-4 py-3">Actions</th>' +
+        '</tr></thead>' +
+        '<tbody>' + rows + '</tbody>' +
+        '</table>';
+}
+
+function exportCustomersCsv() {
+    if (!allCustomersCache.length) {
+        showToast('Nothing to export yet — load the customer list first.');
+        return;
+    }
+
+    const columns = ['phoneNumber', 'name', 'birthdate', 'arcNumber', 'country', 'carrier', 'simType', 'currentPlanName', 'contractStart', 'contractEnd', 'firstPurchaseDate'];
+
+    function csvEscape(value) {
+        const str = value == null ? '' : String(value);
+        if (/[",\n]/.test(str)) return '"' + str.replace(/"/g, '""') + '"';
+        return str;
+    }
+
+    const lines = [columns.join(',')];
+    allCustomersCache.forEach(function (c) {
+        lines.push(columns.map(function (col) { return csvEscape(c[col]); }).join(','));
+    });
+
+    const blob = new Blob([lines.join('\n')], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'customers-' + todayIso() + '.csv';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
 }
 
 // ---------- upsert modal (activate / renew / new) ----------
