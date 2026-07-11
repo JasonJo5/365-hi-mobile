@@ -107,6 +107,7 @@
 <div class="flex gap-2 mb-8 bg-surface-container-high rounded-full p-1 w-fit">
 <button class="admin-tab-btn px-5 py-2 rounded-full text-sm font-bold transition-colors bg-primary text-on-primary" data-tab="queue" onclick="switchTab('queue')" type="button">Today's Queue</button>
 <button class="admin-tab-btn px-5 py-2 rounded-full text-sm font-bold transition-colors text-on-surface-variant" data-tab="customers" onclick="switchTab('customers')" type="button">Customers</button>
+<button class="admin-tab-btn px-5 py-2 rounded-full text-sm font-bold transition-colors text-on-surface-variant" data-tab="all-customers" onclick="switchTab('all-customers')" type="button">All Customers</button>
 </div>
 
 <!-- Queue tab -->
@@ -134,6 +135,26 @@
 </div>
 <div class="space-y-3" id="customer-results">
 <p class="text-on-surface-variant text-sm text-center py-8">Search for a customer by phone number or name.</p>
+</div>
+</div>
+
+<!-- All Customers tab -->
+<div class="hidden" id="tab-all-customers">
+<div class="flex items-center justify-between gap-3 mb-4">
+<p class="text-on-surface-variant text-sm" id="all-customers-count">—</p>
+<div class="flex gap-2">
+<button class="px-4 py-2 rounded-xl bg-surface-container-high border border-outline-variant/30 hover:border-primary transition-colors flex items-center gap-1.5 text-sm font-bold" onclick="loadAllCustomers()" type="button">
+<span class="material-symbols-outlined text-[18px]" data-icon="refresh">refresh</span>
+<span>Refresh</span>
+</button>
+<button class="px-4 py-2 rounded-xl bg-primary text-on-primary font-bold text-sm flex items-center gap-1.5" onclick="exportCustomersCsv()" type="button">
+<span class="material-symbols-outlined text-[18px]" data-icon="download">download</span>
+<span>Export CSV</span>
+</button>
+</div>
+</div>
+<div class="glass-panel rounded-2xl overflow-x-auto" id="all-customers-table-wrap">
+<p class="text-on-surface-variant text-sm text-center py-8">Loading...</p>
 </div>
 </div>
 
