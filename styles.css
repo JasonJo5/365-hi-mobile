@@ -6,102 +6,115 @@
    keep working via rgb(var(--x) / <alpha-value>)
    ============================================ */
 :root {
-  --color-outline: 135 146 154;
-  --color-secondary-container: 0 165 114;
-  --color-surface-tint: 123 208 255;
-  --color-inverse-primary: 0 102 138;
-  --color-tertiary: 225 191 255;
-  --color-on-surface-variant: 189 200 209;
-  --color-surface-container-high: 34 42 61;
+  --color-outline: 130 145 190;
+  --color-secondary-container: 255 205 130;
+  --color-surface-tint: 90 140 255;
+  --color-inverse-primary: 29 78 216;
+  --color-tertiary: 147 197 253;
+  --color-on-surface-variant: 186 200 230;
+  --color-surface-container-high: 30 41 74;
   --color-on-error-container: 255 218 214;
-  --color-surface-container-lowest: 6 14 32;
-  --color-on-secondary: 0 56 36;
-  --color-surface-container: 23 31 51;
+  --color-surface-container-lowest: 8 14 32;
+  --color-on-secondary: 61 32 0;
+  --color-surface-container: 20 30 58;
   --color-error: 255 180 171;
-  --color-surface: 11 19 38;
-  --color-surface-bright: 49 57 77;
-  --color-primary-container: 56 189 248;
-  --color-on-primary: 0 53 74;
-  --color-tertiary-container: 206 155 255;
-  --color-on-secondary-container: 0 49 31;
-  --color-outline-variant: 62 72 79;
+  --color-surface: 12 20 42;
+  --color-surface-bright: 46 60 100;
+  --color-primary-container: 37 99 235;
+  --color-on-primary: 255 255 255;
+  --color-tertiary-container: 96 165 250;
+  --color-on-secondary-container: 61 32 0;
+  --color-outline-variant: 55 70 110;
   --color-error-container: 147 0 10;
-  --color-surface-variant: 45 52 73;
+  --color-surface-variant: 42 54 90;
   --color-on-error: 105 0 5;
-  --color-background: 11 19 38;
-  --color-on-surface: 218 226 253;
-  --color-surface-dim: 11 19 38;
-  --color-surface-container-highest: 45 52 73;
-  --color-on-primary-container: 0 73 101;
-  --color-primary: 142 213 255;
-  --color-on-tertiary-container: 100 0 172;
-  --color-inverse-on-surface: 40 48 68;
-  --color-on-tertiary: 73 0 128;
-  --color-secondary: 78 222 163;
-  --color-on-background: 218 226 253;
-  --color-surface-container-low: 19 27 46;
-  --color-inverse-surface: 218 226 253;
+  --color-background: 12 20 42;
+  --color-on-surface: 226 233 250;
+  --color-surface-dim: 12 20 42;
+  --color-surface-container-highest: 55 70 110;
+  --color-on-primary-container: 245 248 255;
+  --color-primary: 130 170 255;
+  --color-on-tertiary-container: 12 40 90;
+  --color-inverse-on-surface: 30 41 74;
+  --color-on-tertiary: 12 40 90;
+  --color-secondary: 255 185 90;
+  --color-on-background: 226 233 250;
+  --color-surface-container-low: 16 25 50;
+  --color-inverse-surface: 226 233 250;
 
   /* Raw (non-Tailwind-routed) tokens used directly in custom CSS below */
-  --glass-tint: 23 31 51;
-  --glass-tint-2: 11 19 38;
-  --glass-border: 218 226 253;
-  --plan-grad-1: 19 27 46;
-  --plan-grad-2: 11 19 38;
-  --orb-opacity: 0.15;
+  --glass-tint: 20 30 58;
+  --glass-tint-2: 12 20 42;
+  --glass-border: 226 233 250;
+  --plan-grad-1: 16 25 50;
+  --plan-grad-2: 12 20 42;
+  --orb-opacity: 0.20;
 }
 
 html.light {
-  --color-outline: 115 119 127;
-  --color-secondary-container: 164 244 207;
-  --color-surface-tint: 0 102 138;
-  --color-inverse-primary: 142 213 255;
-  --color-tertiary: 105 0 179;
-  --color-on-surface-variant: 67 71 78;
-  --color-surface-container-high: 228 230 239;
+  --color-outline: 120 140 190;
+  --color-secondary-container: 255 220 160;
+  --color-surface-tint: 29 78 216;
+  --color-inverse-primary: 130 170 255;
+  --color-tertiary: 14 165 233;
+  --color-on-surface-variant: 71 85 105;
+  --color-surface-container-high: 219 234 254;
   --color-on-error-container: 65 0 2;
-  --color-surface-container-lowest: 245 248 255;
+  --color-surface-container-lowest: 236 244 255;
   --color-on-secondary: 255 255 255;
-  --color-surface-container: 234 236 244;
+  --color-surface-container: 224 238 255;
   --color-error: 186 26 26;
-  --color-surface: 251 252 255;
-  --color-surface-bright: 251 252 255;
-  --color-primary-container: 196 231 255;
+  --color-surface: 244 249 255;
+  --color-surface-bright: 255 255 255;
+  --color-primary-container: 191 219 254;
   --color-on-primary: 255 255 255;
-  --color-tertiary-container: 240 219 255;
-  --color-on-secondary-container: 0 33 15;
-  --color-outline-variant: 195 198 207;
+  --color-tertiary-container: 186 230 253;
+  --color-on-secondary-container: 76 40 0;
+  --color-outline-variant: 191 210 235;
   --color-error-container: 255 218 214;
-  --color-surface-variant: 222 227 235;
+  --color-surface-variant: 210 227 250;
   --color-on-error: 255 255 255;
-  --color-background: 245 248 255;
-  --color-on-surface: 26 28 30;
-  --color-surface-dim: 217 219 227;
-  --color-surface-container-highest: 222 225 234;
-  --color-on-primary-container: 0 30 44;
-  --color-primary: 0 102 138;
-  --color-on-tertiary-container: 44 0 81;
-  --color-inverse-on-surface: 241 240 244;
+  --color-background: 236 244 255;
+  --color-on-surface: 15 23 42;
+  --color-surface-dim: 214 228 250;
+  --color-surface-container-highest: 199 220 248;
+  --color-on-primary-container: 23 37 84;
+  --color-primary: 29 78 216;
+  --color-on-tertiary-container: 12 74 110;
+  --color-inverse-on-surface: 244 249 255;
   --color-on-tertiary: 255 255 255;
-  --color-secondary: 0 105 79;
-  --color-on-background: 26 28 30;
-  --color-surface-container-low: 240 242 250;
-  --color-inverse-surface: 47 48 51;
+  --color-secondary: 217 119 6;
+  --color-on-background: 15 23 42;
+  --color-surface-container-low: 240 247 255;
+  --color-inverse-surface: 30 41 59;
 
   --glass-tint: 255 255 255;
   --glass-tint-2: 255 255 255;
-  --glass-border: 26 28 30;
+  --glass-border: 15 23 42;
   --plan-grad-1: 255 255 255;
-  --plan-grad-2: 240 242 250;
-  --orb-opacity: 0.08;
+  --plan-grad-2: 240 247 255;
+  --orb-opacity: 0.12;
 }
 
 body {
     font-family: 'Geist', sans-serif;
     min-height: 100dvh;
     background-color: rgb(var(--color-surface-container-lowest));
+    background-image:
+        radial-gradient(circle at 15% 0%, rgba(147, 197, 253, 0.35), transparent 55%),
+        radial-gradient(circle at 85% 15%, rgba(96, 165, 250, 0.25), transparent 50%),
+        linear-gradient(180deg, rgb(var(--color-surface-container-lowest)) 0%, rgb(var(--color-surface-container-lowest)) 100%);
+    background-attachment: fixed;
     color: rgb(var(--color-on-surface));
     transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+html.light body {
+    background-image:
+        radial-gradient(circle at 12% -5%, rgba(147, 197, 253, 0.55), transparent 55%),
+        radial-gradient(circle at 88% 10%, rgba(191, 219, 254, 0.6), transparent 50%),
+        radial-gradient(circle at 50% 100%, rgba(224, 242, 254, 0.7), transparent 60%),
+        linear-gradient(180deg, #eaf3ff 0%, #ffffff 55%, #f2f8ff 100%);
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -137,21 +150,21 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Vibrant Gradients */
 .gradient-text {
-    background: linear-gradient(to right, #8ed5ff, #ce9bff);
+    background: linear-gradient(to right, #93c5fd, #60a5fa);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
 }
 
 html.light .gradient-text {
-    background: linear-gradient(to right, #00668a, #6900b3);
+    background: linear-gradient(to right, #1d4ed8, #0ea5e9);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
 }
 
 .gradient-bg-vibrant {
-    background: linear-gradient(135deg, #00668a 0%, #6400ac 50%, #00a572 100%);
+    background: linear-gradient(135deg, #1d4ed8 0%, #0ea5e9 50%, #93c5fd 100%);
     opacity: var(--orb-opacity);
     filter: blur(80px);
     transition: opacity 0.3s ease;
@@ -165,6 +178,15 @@ html.light .gradient-text {
 }
 .plan-card:hover {
     transform: translateY(-8px) scale(1.02);
+}
+
+/* Cleaner, simplified plan card style (icon-row layout) */
+.plan-card-clean {
+    height: 100%;
+    background: rgb(var(--color-surface));
+}
+.plan-card-clean:hover {
+    transform: translateY(-4px);
 }
 
 /* Plan Specific Hovers */
