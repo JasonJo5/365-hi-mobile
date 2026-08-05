@@ -4,7 +4,7 @@ const translations = {
         hero_badge: "🇰🇷 Korea's Fast & Reliable SIM Provider",
         hero_title: "Stay Connected Anywhere in <br><span class=\"gradient-text\">Korea.</span>",
         hero_subtitle: "Choose the right SIM plan for your stay. Do you have a Korean Resident Card?",
-        arc_yes_title: "I Have an ARC", arc_no_title: "No ARC",
+        arc_yes_title: "I Have Korea Resident Card", arc_no_title: "No Korea Resident Card",
         arc_yes_cta: "→ Postpaid Plans", arc_no_cta: "→ Prepaid Plans",
         h_how_it_works: "How It Works", how_subtitle: "Getting connected takes three simple steps.",
         step1_label: "Step 1", step1_title: "Message Us", step1_desc: "Pick a plan and reach out via WhatsApp, Instagram, KakaoTalk, or WeChat to let us know you're coming.",
@@ -13,7 +13,7 @@ const translations = {
         h_choose_plan: "Choose Your Plan", choose_plan_subtitle: "Select the perfect connectivity package for your stay in Korea.",
         tab_prepaid: "PREPAID PLANS", tab_postpaid: "POSTPAID PLANS",
         prepaid_banner: "Prepaid SIM is activated via passport or Korean Resident Card. Unlimited data & calls on every plan.",
-        postpaid_banner: "Requires a Korean Resident Card (ARC). Choose a Regular (8-month) or 5G (1-year) contract plan below.",
+        postpaid_banner: "Requires a Korea Resident Card. Choose a Regular (8-month) or 5G (1-year) contract plan below.",
         h_regular_plans: "Regular Plans", h_5g_plans: "5G Plans",
         badge_8mo_contract: "8 Month Contract", badge_1yr_contract: "1 Year Contract",
         badge_best_value: "Best Value", badge_most_popular: "Most Popular",
@@ -265,6 +265,7 @@ async function loadReviews() {
                 <p class="font-bold text-on-surface text-sm">— ${escapeHtml(r.name || 'Anonymous')}</p>
             `;
             list.appendChild(card);
+            applyReviewCardReveal(card);
         });
         if (count > 0) {
             const avg = (total / count).toFixed(1);
@@ -338,7 +339,124 @@ async function submitReview(event) {
 document.addEventListener('DOMContentLoaded', function () {
     initStarPicker();
     loadReviews();
+    initScrollReveal();
+    initScrollEffects();
 });
+
+// ===== Scroll progress bar + parallax background orbs =====
+function initScrollEffects() {
+    const progressBar = document.getElementById('scroll-progress');
+    const orbs = document.querySelectorAll('.parallax-orb');
+    if (!progressBar && orbs.length === 0) return;
+
+    const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let ticking = false;
+
+    function update() {
+        const scrollTop = window.scrollY || document.documentElement.scrollTop;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+
+        if (progressBar) {
+            progressBar.style.width = pct + '%';
+        }
+
+        if (!reduceMotion) {
+            orbs.forEach(orb => {
+                const speed = parseFloat(orb.dataset.speed || '0.1');
+                orb.style.transform = `translateY(${scrollTop * speed}px)`;
+            });
+        }
+
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            requestAnimationFrame(update);
+            ticking = true;
+        }
+    }, { passive: true });
+
+    update();
+}
+
+// ===== Scroll reveal: several distinct entrance styles by section, so the page doesn't feel monotonous =====
+// Elements animate in AND back out — scrolling past them the other way plays the transition in reverse,
+// so scrolling back up hides them again just like scrolling down revealed them.
+let revealObserver = null;
+function getRevealObserver() {
+    if (!revealObserver) {
+        revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                const el = entry.target;
+                if (entry.isIntersecting) {
+                    // Entering: use its assigned stagger delay so groups cascade in, and drop
+                    // the fast-exit override so the next exit (if any) plays at full, eased speed.
+                    el.style.transitionDelay = (el.dataset.revealDelay || '0') + 'ms';
+                    el.classList.remove('reveal-exit');
+                    el.classList.add('reveal-visible');
+                } else {
+                    // Leaving: no delay, plus the snappier reveal-exit transition, so it finishes
+                    // fading/sliding out before fast scrolling (especially back upward) carries it
+                    // past the observer's margin and makes it look like it just vanished.
+                    el.style.transitionDelay = '0ms';
+                    el.classList.add('reveal-exit');
+                    el.classList.remove('reveal-visible');
+                }
+            });
+        }, { threshold: 0.15, rootMargin: '-8% 0px -8% 0px' });
+    }
+    return revealObserver;
+}
+
+// Applies a reveal variant + staggered delay to one element, then starts observing it.
+function applyReveal(el, variant, delayMs) {
+    if (!el || el.dataset.revealApplied) return;
+    el.dataset.revealApplied = '1';
+    el.dataset.revealDelay = delayMs || 0;
+    el.classList.add('reveal', variant);
+    getRevealObserver().observe(el);
+}
+
+// Rules mapping a section/selector to a variant, with optional stagger between siblings.
+// "alternate-lr" cycles left/right/up so a list of cards doesn't slide in identically.
+const REVEAL_RULES = [
+    { selector: '#how-it-works .glass-panel', variant: 'alternate-lr', stagger: 130 },
+    { selector: '#plans .plan-card-clean', variant: 'reveal-zoom', stagger: 55, mod: 4 },
+    { selector: '#compare .glass-panel', variant: 'reveal-blur', stagger: 0 },
+    { selector: '#write-review-panel', variant: 'reveal-up', stagger: 0 },
+    { selector: '#faq .glass-panel', variant: 'reveal-up', stagger: 60, mod: 6 },
+    { selector: '#contact .glass-panel', variant: 'reveal-flip', stagger: 90 },
+    { selector: '#location .glass-panel', variant: 'reveal-blur', stagger: 0 },
+];
+
+const ALTERNATING_VARIANTS = ['reveal-left', 'reveal-right', 'reveal-up'];
+
+function initScrollReveal() {
+    // Elements inside modals are hidden (display:none) until opened by a click, so they
+    // never intersect the viewport — skip them entirely rather than leaving them invisible forever.
+    const isInModal = (el) => !!el.closest('#qr-modal, #select-modal');
+
+    REVEAL_RULES.forEach(rule => {
+        const els = Array.from(document.querySelectorAll(rule.selector)).filter(el => !isInModal(el));
+        els.forEach((el, i) => {
+            const variant = rule.variant === 'alternate-lr'
+                ? ALTERNATING_VARIANTS[i % ALTERNATING_VARIANTS.length]
+                : rule.variant;
+            const staggerIndex = rule.mod ? (i % rule.mod) : i;
+            applyReveal(el, variant, staggerIndex * rule.stagger);
+        });
+    });
+}
+
+// Submitted review cards are injected later (Firebase), so they get their own alternating reveal.
+let reviewCardIndex = 0;
+function applyReviewCardReveal(card) {
+    const variant = ALTERNATING_VARIANTS[reviewCardIndex % ALTERNATING_VARIANTS.length];
+    applyReveal(card, variant, Math.min(reviewCardIndex, 4) * 70);
+    reviewCardIndex++;
+}
 
 function toggleFaq(button) {
     const content = button.nextElementSibling;
