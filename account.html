@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>My Account | 365 Hi Mobile</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Sora:wght@100..800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "outline": "rgb(var(--color-outline) / <alpha-value>)",
+                "secondary-container": "rgb(var(--color-secondary-container) / <alpha-value>)",
+                "surface-tint": "rgb(var(--color-surface-tint) / <alpha-value>)",
+                "inverse-primary": "rgb(var(--color-inverse-primary) / <alpha-value>)",
+                "tertiary": "rgb(var(--color-tertiary) / <alpha-value>)",
+                "on-surface-variant": "rgb(var(--color-on-surface-variant) / <alpha-value>)",
+                "surface-container-high": "rgb(var(--color-surface-container-high) / <alpha-value>)",
+                "on-error-container": "rgb(var(--color-on-error-container) / <alpha-value>)",
+                "surface-container-lowest": "rgb(var(--color-surface-container-lowest) / <alpha-value>)",
+                "secondary-fixed": "#6ffbbe",
+                "on-secondary": "rgb(var(--color-on-secondary) / <alpha-value>)",
+                "surface-container": "rgb(var(--color-surface-container) / <alpha-value>)",
+                "on-tertiary-fixed": "#2c0051",
+                "primary-fixed-dim": "#7bd0ff",
+                "error": "rgb(var(--color-error) / <alpha-value>)",
+                "surface": "rgb(var(--color-surface) / <alpha-value>)",
+                "surface-bright": "rgb(var(--color-surface-bright) / <alpha-value>)",
+                "primary-container": "rgb(var(--color-primary-container) / <alpha-value>)",
+                "on-primary": "rgb(var(--color-on-primary) / <alpha-value>)",
+                "tertiary-container": "rgb(var(--color-tertiary-container) / <alpha-value>)",
+                "on-secondary-container": "rgb(var(--color-on-secondary-container) / <alpha-value>)",
+                "on-secondary-fixed": "#002113",
+                "outline-variant": "rgb(var(--color-outline-variant) / <alpha-value>)",
+                "error-container": "rgb(var(--color-error-container) / <alpha-value>)",
+                "surface-variant": "rgb(var(--color-surface-variant) / <alpha-value>)",
+                "primary-fixed": "#c4e7ff",
+                "on-primary-fixed-variant": "#004c69",
+                "on-error": "rgb(var(--color-on-error) / <alpha-value>)",
+                "tertiary-fixed-dim": "#ddb7ff",
+                "background": "rgb(var(--color-background) / <alpha-value>)",
+                "on-secondary-fixed-variant": "#005236",
+                "on-surface": "rgb(var(--color-on-surface) / <alpha-value>)",
+                "surface-dim": "rgb(var(--color-surface-dim) / <alpha-value>)",
+                "surface-container-highest": "rgb(var(--color-surface-container-highest) / <alpha-value>)",
+                "on-primary-container": "rgb(var(--color-on-primary-container) / <alpha-value>)",
+                "secondary-fixed-dim": "#4edea3",
+                "primary": "rgb(var(--color-primary) / <alpha-value>)",
+                "on-tertiary-container": "rgb(var(--color-on-tertiary-container) / <alpha-value>)",
+                "inverse-on-surface": "rgb(var(--color-inverse-on-surface) / <alpha-value>)",
+                "on-tertiary-fixed-variant": "#6900b3",
+                "on-tertiary": "rgb(var(--color-on-tertiary) / <alpha-value>)",
+                "on-primary-fixed": "#001e2c",
+                "secondary": "rgb(var(--color-secondary) / <alpha-value>)",
+                "on-background": "rgb(var(--color-on-background) / <alpha-value>)",
+                "tertiary-fixed": "#f0dbff",
+                "surface-container-low": "rgb(var(--color-surface-container-low) / <alpha-value>)",
+                "inverse-surface": "rgb(var(--color-inverse-surface) / <alpha-value>)",
+                "plan-a": "#3B82F6", "plan-b": "#10B981", "plan-c": "#8B5CF6",
+                "plan-d": "#F59E0B", "plan-e": "#EC4899", "plan-f": "#06B6D4"
+        },
+        "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+        "spacing": { "container-max": "1280px", "gutter": "24px", "margin-desktop": "64px", "margin-mobile": "20px", "base": "8px" },
+        "fontFamily": { "sans": ["Geist", "sans-serif"], "display": ["Sora", "sans-serif"] }
+      },
+    },
+  }
+</script>
+<link rel="stylesheet" href="styles.css">
+
+</head>
+<body class="bg-surface-container-lowest text-on-surface font-sans overflow-x-hidden min-h-screen">
+
+<div class="fixed top-0 left-0 w-full h-full pointer-events-none z-0 overflow-hidden">
+<div class="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] rounded-full gradient-bg-vibrant"></div>
+<div class="absolute bottom-[-10%] right-[-10%] w-[60%] h-[60%] rounded-full gradient-bg-vibrant" style="background: linear-gradient(135deg, #4edea3 0%, #004c69 100%);"></div>
+</div>
+
+<header class="w-full z-50 bg-surface-container-lowest/70 backdrop-blur-xl border-b border-white/5 relative">
+<div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 max-w-container-max mx-auto h-20">
+<a class="flex items-center gap-3" href="index.html">
+<div class="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-tertiary flex items-center justify-center shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-surface-container-lowest text-xl" data-icon="signal_cellular_alt">signal_cellular_alt</span>
+</div>
+<span class="font-display text-xl font-bold text-on-surface tracking-tight">365 Hi Mobile</span>
+</a>
+<div class="flex items-center gap-3">
+<button aria-label="Toggle dark/light mode" class="theme-toggle" id="theme-toggle-btn" onclick="toggleTheme()" type="button">
+<span class="theme-toggle-knob"><span class="material-symbols-outlined" data-icon="dark_mode" id="theme-toggle-icon">dark_mode</span></span>
+</button>
+<a class="text-sm font-bold text-on-surface-variant hover:text-primary transition-colors flex items-center gap-1" href="index.html">
+<span class="material-symbols-outlined text-[18px]" data-icon="arrow_back">arrow_back</span>
+<span class="hidden sm:inline">Back to site</span>
+</a>
+</div>
+</div>
+</header>
+
+<main class="relative z-10 max-w-lg mx-auto px-margin-mobile py-16 md:py-24">
+
+<!-- ===== Step 1: Phone number entry ===== -->
+<section id="step-phone">
+<div class="text-center mb-10">
+<div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary to-tertiary flex items-center justify-center mx-auto mb-6 shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-surface-container-lowest text-[28px]" data-icon="lock">lock</span>
+</div>
+<h1 class="text-headline-lg font-display font-bold text-on-surface mb-2">My Account</h1>
+<p class="text-on-surface-variant text-sm leading-relaxed">Enter the phone number on file with your SIM plan to look up your account.</p>
+</div>
+
+<div class="glass-panel rounded-[24px] p-6 md:p-8">
+<label class="block text-label-sm font-bold text-on-surface-variant uppercase tracking-wide mb-2" for="phone-input">Phone Number</label>
+<div class="flex gap-2 mb-4">
+<div class="w-20 flex items-center justify-center bg-surface-container-high rounded-xl border border-outline-variant/30 text-on-surface font-bold text-sm">🇰🇷 +82</div>
+<input class="flex-1 bg-surface-container-high rounded-xl border border-outline-variant/30 px-4 py-3 text-on-surface placeholder:text-on-surface-variant/60 focus:outline-none focus:border-primary transition-colors" id="phone-input" inputmode="numeric" placeholder="10-1234-5678" type="tel">
+</div>
+<p class="hidden text-error text-sm mb-4" id="phone-error"></p>
+<button class="w-full py-3.5 rounded-full bg-primary text-on-primary font-bold hover:opacity-90 transition-opacity flex items-center justify-center gap-2" id="continue-btn" onclick="goToBirthdateStep()" type="button">
+<span>Continue</span>
+<span class="material-symbols-outlined text-[20px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</section>
+
+<!-- ===== Step 2: Birthdate confirmation ===== -->
+<section class="hidden" id="step-birthdate">
+<div class="text-center mb-10">
+<div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-secondary to-primary flex items-center justify-center mx-auto mb-6 shadow-lg shadow-secondary/20">
+<span class="material-symbols-outlined text-surface-container-lowest text-[28px]" data-icon="calendar_month">calendar_month</span>
+</div>
+<h1 class="text-headline-lg font-display font-bold text-on-surface mb-2">Confirm Your Birthdate</h1>
+<p class="text-on-surface-variant text-sm leading-relaxed">For <span class="font-bold text-on-surface" id="birthdate-phone-display"></span> — enter the date of birth on file to view your account.</p>
+</div>
+
+<div class="glass-panel rounded-[24px] p-6 md:p-8">
+<label class="block text-label-sm font-bold text-on-surface-variant uppercase tracking-wide mb-2" for="birthdate-input">Date of Birth</label>
+<input class="w-full bg-surface-container-high rounded-xl border border-outline-variant/30 px-4 py-3 text-on-surface focus:outline-none focus:border-primary transition-colors mb-4" id="birthdate-input" type="date">
+<p class="hidden text-error text-sm mb-4" id="birthdate-error"></p>
+<button class="w-full py-3.5 rounded-full bg-primary text-on-primary font-bold hover:opacity-90 transition-opacity mb-3" id="lookup-btn" onclick="lookupCustomer()" type="button">View My Account</button>
+<button class="w-full py-3 rounded-full text-on-surface-variant font-bold hover:text-primary transition-colors text-sm" onclick="backToPhoneStep()" type="button">← Use a different number</button>
+</div>
+</section>
+
+<!-- ===== Step 3: Dashboard ===== -->
+<section class="hidden" id="step-dashboard">
+<div class="flex items-center justify-between mb-8">
+<div>
+<p class="text-on-surface-variant text-sm">Welcome back,</p>
+<h1 class="text-headline-lg font-display font-bold text-on-surface" id="dash-name">—</h1>
+</div>
+<button aria-label="Sign out" class="w-10 h-10 rounded-full bg-surface-container-high border border-outline-variant/30 flex items-center justify-center hover:bg-error/10 hover:text-error transition-colors" onclick="signOutAccount()" type="button">
+<span class="material-symbols-outlined text-[20px]" data-icon="logout">logout</span>
+</button>
+</div>
+
+<!-- Current plan card -->
+<div class="glass-panel rounded-[24px] p-6 md:p-8 mb-6">
+<div class="flex items-center justify-between mb-6">
+<span class="text-label-sm font-bold text-primary uppercase tracking-wide">Current Plan</span>
+<span class="px-3 py-1 rounded-full text-label-sm font-bold uppercase" id="dash-status-badge">Active</span>
+</div>
+<h2 class="font-display font-bold text-[24px] text-on-surface mb-1" id="dash-plan-name">—</h2>
+<p class="text-on-surface-variant text-sm mb-6" id="dash-plan-carrier">—</p>
+<div class="grid grid-cols-2 gap-4 pt-4 border-t border-outline-variant/20">
+<div>
+<p class="text-label-sm text-on-surface-variant uppercase tracking-wide mb-1">Contract Start</p>
+<p class="font-bold text-on-surface" id="dash-contract-start">—</p>
+</div>
+<div>
+<p class="text-label-sm text-on-surface-variant uppercase tracking-wide mb-1">Contract End</p>
+<p class="font-bold text-on-surface" id="dash-contract-end">—</p>
+</div>
+</div>
+</div>
+
+<!-- Profile info card -->
+<div class="glass-panel rounded-[24px] p-6 md:p-8 mb-6">
+<span class="text-label-sm font-bold text-primary uppercase tracking-wide mb-6 block">Profile</span>
+<div class="space-y-4 text-sm">
+<div class="flex justify-between items-center"><span class="text-on-surface-variant">Phone Number</span><span class="font-bold text-on-surface" id="dash-phone">—</span></div>
+<div class="flex justify-between items-center"><span class="text-on-surface-variant">Birthdate</span><span class="font-bold text-on-surface" id="dash-birthdate">—</span></div>
+<div class="flex justify-between items-center">
+<span class="text-on-surface-variant">ARC Number</span>
+<span class="flex items-center gap-2">
+<span class="font-bold text-on-surface" id="dash-arc">••••••••</span>
+<button aria-label="Show ARC number" class="text-on-surface-variant hover:text-primary" id="arc-toggle-btn" onclick="toggleArcVisibility()" type="button">
+<span class="material-symbols-outlined text-[18px]" data-icon="visibility">visibility</span>
+</button>
+</span>
+</div>
+<div class="flex justify-between items-center"><span class="text-on-surface-variant">Country</span><span class="font-bold text-on-surface" id="dash-country">—</span></div>
+<div class="flex justify-between items-center"><span class="text-on-surface-variant">SIM Type</span><span class="font-bold text-on-surface" id="dash-sim-type">—</span></div>
+<div class="flex justify-between items-center"><span class="text-on-surface-variant">First Purchase</span><span class="font-bold text-on-surface" id="dash-first-purchase">—</span></div>
+</div>
+</div>
+
+<!-- Plan history -->
+<div class="glass-panel rounded-[24px] p-6 md:p-8">
+<span class="text-label-sm font-bold text-primary uppercase tracking-wide mb-6 block">Plan History</span>
+<div class="space-y-4" id="dash-history-list">
+<p class="text-sm text-on-surface-variant" id="dash-history-empty">No previous plans on record.</p>
+</div>
+</div>
+</section>
+
+<!-- Not found state -->
+<section class="hidden text-center" id="step-not-found">
+<div class="w-16 h-16 rounded-2xl bg-error-container flex items-center justify-center mx-auto mb-6">
+<span class="material-symbols-outlined text-on-error-container text-[28px]" data-icon="person_search">person_search</span>
+</div>
+<h1 class="text-headline-lg font-display font-bold text-on-surface mb-2">No Account Found</h1>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-8">We couldn't find a record for this phone number. If you're a customer with an active plan, please contact us so we can look into it.</p>
+<button class="px-6 py-3 rounded-full bg-primary text-on-primary font-bold" onclick="backToPhoneStep()" type="button">Try Again</button>
+</section>
+
+</main>
+
+<script src="script.js"></script>
+<script src="account.js"></script>
+</body>
+</html>
